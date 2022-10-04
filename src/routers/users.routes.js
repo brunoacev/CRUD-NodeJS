@@ -1,25 +1,19 @@
 import { Router } from "express";
-import createUseController from "../controllers/createUser.controllers";
-import deleteUserController from "../controllers/deleteUser.controllers";
-import listUserController from "../controllers/listUser.controllers";
-import listUserIDController from "../controllers/listUserID.controllers";
-import updateUserController from "../controllers/updateUser.controllers";
+import createController from "../controllers/create.controllers";
+import deleteController from "../controllers/delete.controllers";
+import listAllController from "../controllers/listAll.controllers";
+import profileController from "../controllers/profile.controllers";
+import updateController from "../controllers/update.controllers";
 
-import verifyAuthTokenMiddleware from "../middlewares/verifyAuthToken.middleware";
-import veryfyEmailAvaliabilityMiddleware from "../middlewares/verifyEmailAvaliability.middleware";
-import verifyUserAdm from "../middlewares/verifyUserAdm.middleware";
+import checkUserAdm from "../middlewares/checkUserAdm.middlewares";
+import checkUserToken from "../middlewares/checkUserToken.middlewares";
 
-const router = Router();
+const userRoutes = Router();
 
-router.post("", veryfyEmailAvaliabilityMiddleware, createUseController);
+userRoutes.post("", createController);
+userRoutes.get("", checkUserToken, checkUserAdm, listAllController);
+userRoutes.get("/:id", checkUserToken, profileController);
+userRoutes.patch("/:id", checkUserToken, updateController);
+userRoutes.delete("/:id", checkUserToken, deleteController)
 
-router.get("", verifyUserAdm, listUserController);
-
-router.get("/:id", verifyAuthTokenMiddleware, listUserIDController);
-
-router.patch("/:id", verifyAuthTokenMiddleware, updateUserController);
-
-router.delete("/:id", verifyAuthTokenMiddleware, deleteUserController);
-
-export default router;
-
+export default userRoutes;

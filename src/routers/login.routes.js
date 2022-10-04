@@ -1,10 +1,7 @@
 import { Router } from "express";
+import loginController from "../controllers/login.controllers";
 
-import loginUserController from "../controllers/loginUser.controllers";
-import verifyUserAdm from "../middlewares/verifyUserAdm.middleware";
+const loginRoutes = Router();
+loginRoutes.post("", loginController);
 
-const routerLogin = Router();
-
-routerLogin.post("", loginUserController);
-
-export default routerLogin;
+export default loginRoutes;

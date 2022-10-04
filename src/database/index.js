@@ -1,3 +1,5 @@
-const userDB = [];
+const usersData = [];
 
-export default userDB;
+export default usersData;
+
+
