@@ -1,5 +1,10 @@
 # Express: CRUD de usuário + permissão de administrador
 
+#### Tecnologias Utilizadas:
+
+- Node JS
+- Express
+
 Para inciar este projeto, é necessário instalar as dependências, que serão utilizadas nos testes. Portanto utilize o comando abaixo para instalar tais dependências:
 
 ````
