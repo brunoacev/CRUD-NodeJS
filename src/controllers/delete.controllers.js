@@ -6,9 +6,9 @@ const deleteController = (req, res) => {
 
   const userDelete = deleteUserService(authorization, uuid);
 
-  // if (userDelete.message === "Unauthorized") {
-  //   return res.status(401).json(userDelete);
-  // }
+  if (userDelete.message === "Missing admin permissions") {
+    return res.status(401).json(userDelete);
+  }
 
   return res.json(userDelete);
 };
